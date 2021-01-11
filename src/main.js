@@ -27,8 +27,24 @@ import ReactDOM from 'react-dom'
 
 // 如果要直接使用 JSX 语法，需要先安装相关的 语法转换工具
 // 运行yarn add babel-preset-react -D
+var mytitle = "这是使用变量定义的title"
+// 如果要在我们的JSX语法内容，书写 JS 代码，那么所有的 JS 代码，必须写在 {} 内部
+// 当编译引擎，在编译JSX代码的时候，如果遇到了'<'，那么把它当HTML代码去编译，如果遇到了'{}'，就把花括号内的代码当作普通JS代码去编译
+// 在花括号内部，可以写任何符合js规范的表达式代码
+// 在JSX创建节点时，必须有唯一的一个根节点
+var arr = []
+for(let i=0; i<10; i++) {
+  var p = <p className="" key={i}>但是，你知道他的本质吗？</p>
+  arr.push(p)
+}
 var myDiv = <div>
   这是使用 JSX 创建的div元素
+  <h1 title={mytitle + 'aaa'}>JSX真好用</h1>
+  {/* 如果要写注释，注释也要写到花括号里面 */}
+  {/* 在jsx中，要添加class属性，需写成className，因为class在es6中，是关键字，和class类似，label标签的for属性，需替换为htmlFor */}
+  <p className="">但是，你知道他的本质吗？</p>
+  <label htmlFor=""></label>
+  {arr}
 </div>
 
 // ReactDOM.render('要渲染的虚拟DOM元素', '要渲染到页面的哪个位置中')
