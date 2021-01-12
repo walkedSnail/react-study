@@ -27,26 +27,39 @@ import ReactDOM from 'react-dom'
 
 // 如果要直接使用 JSX 语法，需要先安装相关的 语法转换工具
 // 运行yarn add babel-preset-react -D
-var mytitle = "这是使用变量定义的title"
+// var mytitle = "这是使用变量定义的title"
 // 如果要在我们的JSX语法内容，书写 JS 代码，那么所有的 JS 代码，必须写在 {} 内部
 // 当编译引擎，在编译JSX代码的时候，如果遇到了'<'，那么把它当HTML代码去编译，如果遇到了'{}'，就把花括号内的代码当作普通JS代码去编译
 // 在花括号内部，可以写任何符合js规范的表达式代码
 // 在JSX创建节点时，必须有唯一的一个根节点
-var arr = []
-for(let i=0; i<10; i++) {
-  var p = <p className="" key={i}>但是，你知道他的本质吗？</p>
-  arr.push(p)
+
+// var arr = []
+// for(let i=0; i<10; i++) {
+//   var p = <p className="" key={i}>但是，你知道他的本质吗？</p>
+//   arr.push(p)
+// }
+// var myDiv = <div>
+//   这是使用 JSX 创建的div元素
+//   <h1 title={mytitle + 'aaa'}>JSX真好用</h1>
+//   {/* 如果要写注释，注释也要写到花括号里面 */}
+//   {/* 在jsx中，要添加class属性，需写成className，因为class在es6中，是关键字，和class类似，label标签的for属性，需替换为htmlFor */}
+//   <p className="">但是，你知道他的本质吗？</p>
+//   <label htmlFor=""></label>
+//   {arr}
+// </div>
+
+// 在React中，构造函数，就是一个最基本的组件
+// 如果想要把组件放到页面上，可以把构造函数的名称，当作组件名称，以HTML标签形式引入页面即可
+// 注意：React在解析所有的标签的时候，是以标签的首字母来区分的，如果标签的首字母是小写，那么就按照普通的HTML标签来解析，如果首字母是大写，则按照组件的形式去解析
+// 组件的首字母必须是大写
+function Hello() {
+  return <div>
+    <span>这是在组件中定义的元素</span>
+  </div>
 }
-var myDiv = <div>
-  这是使用 JSX 创建的div元素
-  <h1 title={mytitle + 'aaa'}>JSX真好用</h1>
-  {/* 如果要写注释，注释也要写到花括号里面 */}
-  {/* 在jsx中，要添加class属性，需写成className，因为class在es6中，是关键字，和class类似，label标签的for属性，需替换为htmlFor */}
-  <p className="">但是，你知道他的本质吗？</p>
-  <label htmlFor=""></label>
-  {arr}
-</div>
 
 // ReactDOM.render('要渲染的虚拟DOM元素', '要渲染到页面的哪个位置中')
 // 注意ReactDOM.render() 方法的第二个参数，和Vue不一样，不接受字符串'#app'这样的字符串，而是需要传递一个原生的dom对象
-ReactDOM.render(myDiv, document.getElementById('app'))
+ReactDOM.render(<div>
+  <Hello></Hello>
+</div>, document.getElementById('app'))
